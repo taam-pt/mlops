@@ -20,5 +20,5 @@ jobs:
         --subscription 204e6c86-7c06-43db-9194-9603bdef8fad 
         --resource-group tutorial-taam 
         --workspace-name aml-tutorial-taam 
-        --file ./.github/mlops/src/job.yml
+        --file ${{ github.workspace.src.job.yml }}
         --stream
