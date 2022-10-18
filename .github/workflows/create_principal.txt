@@ -1,0 +1,1 @@
+az ad sp create-for-rbac --name "principal-github" --role contributor --scopes /subscriptions/204e6c86-7c06-43db-9194-9603bdef8fad/resourcegroups/tutorial-taam --sdk-auth
