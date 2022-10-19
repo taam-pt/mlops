@@ -1,4 +1,12 @@
 name: Pull trigger
 
-run: |
-  echo "Will add code checks here in next challenge"
+on:
+  pull_request:
+
+jobs:
+  temporary:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Code checks
+      run: |
+        echo "Will add code checks here in next challenge"
