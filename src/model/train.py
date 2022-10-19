@@ -3,7 +3,7 @@
 import argparse
 import glob
 import os
-from re import X
+# xfrom re import X
 
 import pandas as pd
 
@@ -28,11 +28,8 @@ def main(args):
 
 
 def get_csvs_df(path, args):
-    print("******************************ARGS É ESTE:  "+str(args))
-    print("******************************O PATH É ESTE:  "+str(path))
-
     if not os.path.exists(path):
-        raise RuntimeError(f"Cannot use non-existent path provided: {path}")
+        raise RuntimeError(f"Cannot use non-existent path provided : {path}")
     csv_files = glob.glob(f"{path}/*.csv")
     if not csv_files:
         raise RuntimeError(f"No CSV files found in provided data path: {path}")
@@ -66,6 +63,7 @@ def parse_args():
 
     # return args
     return args
+
 
 # run script
 if __name__ == "__main__":
