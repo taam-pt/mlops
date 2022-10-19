@@ -8,7 +8,7 @@ inputs:
   training_data: 
     type: uri_folder
     path: azureml://subscriptions/204e6c86-7c06-43db-9194-9603bdef8fad/resourcegroups/tutorial-taam/workspaces/aml-tutorial-taam/datastores/workspaceblobstore/paths/LocalUpload/a5b05a17f213e8e12e54948a8e3d1dfa/data/
-  reg_rate: 0.01
+  reg_rate: 0.02
 environment: azureml:AzureML-sklearn-0.24-ubuntu18.04-py37-cpu@latest
 compute: MLops-tutorial
 experiment_name: teste
