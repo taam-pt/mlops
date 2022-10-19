@@ -2,6 +2,21 @@ name: Manually trigger an Azure Machine Learning job
 
 on:
   workflow_dispatch:
+    inputs:
+      logLevel:
+        description: 'Log level'
+        required: true
+        default: 'warning' 
+        type: choice
+        options:
+        - info
+        - warning
+        - debug 
+      Job:
+        description: 'Job path'
+        required: true
+        default: ./src/job.yml
+        type: string
 
 jobs:
   train:
@@ -20,5 +35,5 @@ jobs:
         --subscription 204e6c86-7c06-43db-9194-9603bdef8fad 
         --resource-group tutorial-taam 
         --workspace-name aml-tutorial-taam 
-        --file ./src/job.yml
+        --file 
         --stream
