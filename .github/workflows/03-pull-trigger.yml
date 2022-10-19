@@ -1,4 +1,4 @@
-name: Placeholder
+name: Pull trigger
 
 run: |
   echo "Will add code checks here in next challenge"
