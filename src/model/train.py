@@ -18,7 +18,7 @@ def main(args):
     mlflow.autolog()
 
     # read data
-    df = get_csvs_df(args.training_data, args)
+    df = get_csvs_df(args.training_data)
 
     # split data
     X_train, X_test, y_train, y_test = split_data(df)
@@ -27,7 +27,7 @@ def main(args):
     train_model(args.reg_rate, X_train, X_test, y_train, y_test)
 
 
-def get_csvs_df(path, args):
+def get_csvs_df(path):
     if not os.path.exists(path):
         raise RuntimeError(f"Cannot use non-existent path provided : {path}")
     csv_files = glob.glob(f"{path}/*.csv")
