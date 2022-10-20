@@ -4,7 +4,8 @@ on:
   workflow_dispatch:
 
 jobs:
-  development:
+  deploy-dev-job:
+    environment: development
     runs-on: ubuntu-latest
     steps:
     - name: Check out repo
@@ -22,7 +23,9 @@ jobs:
         --workspace-name aml-tutorial-taam 
         --file ./src/job-dev.yml
         --stream
-  production:
+  deploy-prod-job:
+    needs: deploy-dev-job
+    environment: production
     runs-on: ubuntu-latest
     steps:
     - name: Check out repo
