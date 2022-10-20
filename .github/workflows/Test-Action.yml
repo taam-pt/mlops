@@ -7,6 +7,8 @@ jobs:
   deploy-dev-job:
     environment: development
     runs-on: ubuntu-latest
+    env:
+      training_data: azureml://subscriptions/204e6c86-7c06-43db-9194-9603bdef8fad/resourcegroups/tutorial-taam/workspaces/aml-tutorial-taam/datastores/workspaceblobstore/paths/UI/2022-10-18_090538_UTC/
     steps:
     - name: Check out repo
       uses: actions/checkout@main
@@ -16,7 +18,5 @@ jobs:
       uses: azure/login@v1
       with:
         creds: ${{secrets.AZURE_CREDENTIALS}}
-    - name: define environment variable
-      run: export training_data="azureml://subscriptions/204e6c86-7c06-43db-9194-9603bdef8fad/resourcegroups/tutorial-taam/workspaces/aml-tutorial-taam/datastores/workspaceblobstore/paths/UI/2022-10-18_090538_UTC/"
     - name: Run experiment
       run: echo $training_data
