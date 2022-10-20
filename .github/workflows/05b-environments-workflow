@@ -1,0 +1,42 @@
+name: Environments scale Azure Machine Learning job
+
+on:
+  workflow_dispatch:
+
+jobs:
+  development:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Check out repo
+      uses: actions/checkout@main
+    - name: Install az ml extension
+      run: az extension add -n ml -y
+    - name: Azure login
+      uses: azure/login@v1
+      with:
+        creds: ${{secrets.AZURE_CREDENTIALS}}
+    - name: Run experiment
+      run: az ml job create 
+        --subscription 204e6c86-7c06-43db-9194-9603bdef8fad 
+        --resource-group tutorial-taam 
+        --workspace-name aml-tutorial-taam 
+        --file ./src/job-dev.yml
+        --stream
+  production:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Check out repo
+      uses: actions/checkout@main
+    - name: Install az ml extension
+      run: az extension add -n ml -y
+    - name: Azure login
+      uses: azure/login@v1
+      with:
+        creds: ${{secrets.AZURE_CREDENTIALS}}
+    - name: Run experiment
+      run: az ml job create 
+        --subscription 204e6c86-7c06-43db-9194-9603bdef8fad 
+        --resource-group tutorial-taam 
+        --workspace-name aml-tutorial-taam 
+        --file ./src/job-prod.yml
+        --stream

@@ -1,5 +1,6 @@
 $schema: https://azuremlschemas.azureedge.net/latest/commandJob.schema.json
 code: model
+
 command: >-
   python train.py
   --training_data ${{inputs.training_data}}
@@ -7,7 +8,7 @@ command: >-
 inputs:
   training_data: 
     type: uri_folder
-    path: azureml://subscriptions/204e6c86-7c06-43db-9194-9603bdef8fad/resourcegroups/tutorial-taam/workspaces/aml-tutorial-taam/datastores/workspaceblobstore/paths/LocalUpload/a5b05a17f213e8e12e54948a8e3d1dfa/data/
+    path: azureml://subscriptions/204e6c86-7c06-43db-9194-9603bdef8fad/resourcegroups/tutorial-taam/workspaces/aml-tutorial-taam/datastores/workspaceblobstore/paths/UI/2022-10-19_160644_UTC/
   reg_rate: 0.04
 environment: azureml:AzureML-sklearn-0.24-ubuntu18.04-py37-cpu@latest
 compute: MLops-tutorial

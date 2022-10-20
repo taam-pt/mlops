@@ -1,0 +1,15 @@
+$schema: https://azuremlschemas.azureedge.net/latest/commandJob.schema.json
+code: model
+command: >-
+  python train.py
+  --training_data $training_data
+  --reg_rate ${{inputs.reg_rate}}
+inputs:
+  training_data: 
+    type: uri_folder
+    path: azureml://subscriptions/204e6c86-7c06-43db-9194-9603bdef8fad/resourcegroups/tutorial-taam/workspaces/aml-tutorial-taam/datastores/workspaceblobstore/paths/UI/2022-10-18_090538_UTC/
+  reg_rate: 0.04
+environment: azureml:AzureML-sklearn-0.24-ubuntu18.04-py37-cpu@latest
+compute: MLops-tutorial
+experiment_name: teste
+description: teste_description
