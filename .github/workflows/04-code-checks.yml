@@ -1,4 +1,4 @@
-name: Code checks
+name: 4.Code checks
 
 on:
   workflow_dispatch:

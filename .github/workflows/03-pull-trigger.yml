@@ -1,4 +1,4 @@
-name: Pull trigger
+name: 3.Pull trigger
 
 on:
   pull_request:

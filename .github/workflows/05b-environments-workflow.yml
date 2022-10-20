@@ -1,4 +1,4 @@
-name: Environments scale Azure Machine Learning job (b)
+name: 5B.Environments scale Azure Machine Learning job
 
 on:
   workflow_dispatch:
