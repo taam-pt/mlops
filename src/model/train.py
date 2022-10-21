@@ -4,6 +4,7 @@ import argparse
 import glob
 import os
 # xfrom re import X
+from mlflow.tracking import MlflowClient
 
 import pandas as pd
 
@@ -16,6 +17,8 @@ import mlflow
 def main(args):
     # TO DO: enable autologging
     mlflow.autolog()
+    run = mlflow.start_run()
+    run_id = run.info.run_id
 
     # read data
     df = get_csvs_df(args.training_data)
@@ -25,6 +28,19 @@ def main(args):
 
     # train model
     train_model(args.reg_rate, X_train, X_test, y_train, y_test)
+
+    # finished_mlflow_run = MlflowClient().get_run(run_id)
+
+    # metrics = finished_mlflow_run.data.metrics
+    # tags = finished_mlflow_run.data.tags
+    # params = finished_mlflow_run.data.params
+
+    # print(run_id,metrics,tags,params)
+
+    # the model folder produced from a run is registered. This includes the MLmodel file, model.pkl and the conda.yaml.
+    model_path = "model"
+    model_uri = 'runs:/{}/{}'.format(run_id, model_path) 
+    mlflow.register_model(model_uri,"Model_diabetes")
 
 
 def get_csvs_df(path):
