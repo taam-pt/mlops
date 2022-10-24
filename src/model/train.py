@@ -4,7 +4,7 @@ import argparse
 import glob
 import os
 # xfrom re import X
-from mlflow.tracking import MlflowClient
+# from mlflow.tracking import MlflowClient
 
 import pandas as pd
 
@@ -37,9 +37,10 @@ def main(args):
 
     # print(run_id,metrics,tags,params)
 
-    # the model folder produced from a run is registered. This includes the MLmodel file, model.pkl and the conda.yaml.
+    # the model folder produced from a run is registered. This includes the
+    # MLmodel file, model.pkl and the conda.yaml.
     model_path = "model"
-    model_uri = 'runs:/{}/{}'.format(run_id, model_path) 
+    model_uri = 'runs:/{}/{}'.format(run_id, model_path)
     mlflow.register_model(model_uri, "Model_diabetes")
 
 
