@@ -1,0 +1,9 @@
+
+# Create the endpoint command:
+az ml online-endpoint create --name diabetes-mlflow-taam-tutorial -f ./src/create-endpoint.yml
+
+# Model deployment command:
+az ml online-deployment create --name mlflow-deployment --endpoint diabetes-mlflow-taam-tutorial -f ./src/model-deploy.yml --all-traffic
+
+# EXAMPLE: Redirect versions
+az ml online-endpoint update --name name-endpoint --traffic "blue=0 green=100"

@@ -43,3 +43,22 @@ jobs:
         --workspace-name aml-tutorial-taam 
         --file ./src/job-prod.yml
         --stream
+  deploy-model_to_endpoint:
+    needs: deploy-prod-job
+    environment: production
+    runs-on: ubuntu-latest
+    steps:
+    - name: Check out repo
+      uses: actions/checkout@main
+    - name: Install az ml extension
+      run: az extension add -n ml -y
+    - name: Azure login
+      uses: azure/login@v1
+      with:
+        creds: ${{secrets.AZURE_CREDENTIALS}}
+    - name: Run experiment
+      run: az ml online-deployment create 
+        --name mlflow-deployment
+        --endpoint diabetes-mlflow-taam-tutorial
+        -f ./src/model-deploy.yml
+        --all-traffic

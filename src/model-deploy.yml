@@ -1,0 +1,8 @@
+$schema: https://azuremlschemas.azureedge.net/latest/managedOnlineDeployment.schema.json
+name: mlflow-deployment
+endpoint_name: diabetes-mlflow-taam-tutorial
+#model: azureml:mir-sample-sklearn-mlflow-model@latest
+#model: azureml://locations/eastus/workspaces/c616bc8e-5245-40cb-b350-d0ada8d34f90/models/Model_diabetes/versions/2
+model: azureml:Model_diabetes@latest
+instance_type: Standard_DS2_v2
+instance_count: 1

@@ -40,7 +40,7 @@ def main(args):
     # the model folder produced from a run is registered. This includes the MLmodel file, model.pkl and the conda.yaml.
     model_path = "model"
     model_uri = 'runs:/{}/{}'.format(run_id, model_path) 
-    mlflow.register_model(model_uri,"Model_diabetes")
+    mlflow.register_model(model_uri, "Model_diabetes")
 
 
 def get_csvs_df(path):
@@ -55,6 +55,7 @@ def get_csvs_df(path):
 # TO DO: add function to split data
 def split_data(df):
     X = df.drop('Diabetic', axis=1)
+    X = X.drop('PatientID', axis=1)
     Y = df.Diabetic
     return train_test_split(X, Y, test_size=0.33, random_state=42)
 
